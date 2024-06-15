@@ -1,0 +1,96 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "HTTP Service created to make possible the creation of expenses in Porcool by other applications.",
+        "title": "porcool-bridge-expense-api",
+        "contact": {
+            "name": "Emmanuel Bergmann",
+            "url": "https://github.com/emmanuelviniciusdev",
+            "email": "emmanuelviniciusdev@gmail.com"
+        }
+    },
+    "basePath": "/api",
+    "paths": {
+        "/api/expense": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Expense"
+                ],
+                "parameters": [
+                    {
+                        "description": "RequestBody",
+                        "name": "RequestBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.RequestPostExpenseInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/api/ping": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.RequestDefaultOutput"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.RequestDefaultOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.RequestPostExpenseInput": {
+            "type": "object",
+            "properties": {
+                "expenseAmount": {
+                    "type": "number"
+                },
+                "expenseName": {
+                    "type": "string"
+                },
+                "expenseSpendingDate": {
+                    "type": "string"
+                },
+                "expenseStatus": {
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}

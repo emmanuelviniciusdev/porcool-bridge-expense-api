@@ -1,0 +1,62 @@
+basePath: /api
+definitions:
+  main.RequestDefaultOutput:
+    properties:
+      message:
+        type: string
+    type: object
+  main.RequestPostExpenseInput:
+    properties:
+      expenseAmount:
+        type: number
+      expenseName:
+        type: string
+      expenseSpendingDate:
+        type: string
+      expenseStatus:
+        type: string
+      userEmail:
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+info:
+  contact:
+    email: emmanuelviniciusdev@gmail.com
+    name: Emmanuel Bergmann
+    url: https://github.com/emmanuelviniciusdev
+  description: HTTP Service created to make possible the creation of expenses in Porcool
+    by other applications.
+  title: porcool-bridge-expense-api
+paths:
+  /api/expense:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: RequestBody
+        in: body
+        name: RequestBody
+        required: true
+        schema:
+          $ref: '#/definitions/main.RequestPostExpenseInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      tags:
+      - Expense
+  /api/ping:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.RequestDefaultOutput'
+      tags:
+      - Test
+swagger: "2.0"
